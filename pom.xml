@@ -26,6 +26,11 @@
         <module>client</module>
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
