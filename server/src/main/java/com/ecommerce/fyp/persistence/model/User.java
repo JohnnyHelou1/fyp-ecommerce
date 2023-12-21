@@ -6,9 +6,9 @@ import jakarta.persistence.*;
 @Table(name = "E_USER")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
-    public int userId;
+    public Integer userId;
 
     @Column(name = "FIRST_NAME")
     public String firstName;
@@ -20,17 +20,22 @@ public class User {
 
     }
 
-    public User(int userId, String firstName, String lastName) {
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public User(Integer userId, String firstName, String lastName) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
