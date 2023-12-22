@@ -1,11 +1,13 @@
 package com.ecommerce.fyp.controllers;
 
-import com.ecommerce.fyp.persistence.model.Product;
 import com.ecommerce.fyp.services.InventoryService;
 import com.ecommerce.fyp.services.exceptions.InsufficientQuantityException;
 import com.ecommerce.fyp.services.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/ecommerce/products")
@@ -18,7 +20,7 @@ public class InventoryController {
     }
 
     @PostMapping(value = "/{id}/inventory/{quantity}")
-    public void createOrUpdateQuantity (@PathVariable("id") int productId, @PathVariable("quantity") int quantity) throws ProductNotFoundException, InsufficientQuantityException {
+    public void createOrUpdateQuantity(@PathVariable("id") int productId, @PathVariable("quantity") int quantity) throws ProductNotFoundException, InsufficientQuantityException {
         inventoryService.createOrUpdateQuantity(productId, quantity);
     }
 }
