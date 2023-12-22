@@ -2,11 +2,9 @@ package com.ecommerce.fyp.services;
 
 import com.ecommerce.fyp.persistence.model.Product;
 import com.ecommerce.fyp.persistence.model.ProductImage;
-import com.ecommerce.fyp.persistence.model.User;
 import com.ecommerce.fyp.persistence.repositories.ProductImageRepository;
 import com.ecommerce.fyp.persistence.repositories.ProductRepository;
 import com.ecommerce.fyp.services.exceptions.ProductNotFoundException;
-import com.ecommerce.fyp.services.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
