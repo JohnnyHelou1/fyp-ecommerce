@@ -2,40 +2,46 @@ package com.ecommerce.fyp.persistence.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PRODUCT_ID")
-    public int productID;
+    private Integer productID;
 
     @Column(name = "Name")
-    public String name;
+    private String name;
 
     @Column(name = "Description")
-    public String description;
+    private String description;
 
     @Column(name = "price")
-    public double price;
+    private double price;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductImage> images;
 
     public Product() {
 
     }
 
-    public Product(int productID, String name, String description, double price) {
+    public Product(Integer productID, String name, String description, double price, List<ProductImage> images) {
         this.productID = productID;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.images = images;
 
     }
 
-    public int getProductID() {
+    public Integer getProductID() {
         return productID;
     }
 
-    public void setProductID(int productID) {
+    public void setProductID(Integer productID) {
         this.productID = productID;
     }
 
@@ -61,5 +67,13 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<ProductImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ProductImage> images) {
+        this.images = images;
     }
 }
