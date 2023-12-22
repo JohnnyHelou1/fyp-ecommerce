@@ -6,15 +6,12 @@ import jakarta.persistence.*;
 @Table(name = "Products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PRODUCT_ID")
     public int productID;
 
     @Column(name = "Name")
-    public String firstName;
-
-    @Column(name = "lName")
-    public String lastName;
+    public String name;
 
     @Column(name = "Description")
     public String description;
@@ -22,19 +19,16 @@ public class Product {
     @Column(name = "price")
     public double price;
 
-    @Column(name = "quantity")
-    public int quantity;
-
-    public Product(){
+    public Product() {
 
     }
-    public Product(int productID, String firstName, String lastName,String description, double price, int quantity ){
+
+    public Product(int productID, String name, String description, double price) {
         this.productID = productID;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.description = description;
         this.price = price;
-        this.quantity = quantity;
+
     }
 
     public int getProductID() {
@@ -45,20 +39,12 @@ public class Product {
         this.productID = productID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -75,13 +61,5 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 }
