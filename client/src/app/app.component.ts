@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ecommerce-client';
+
+  shopNow() {
+    console.log("Hellow00");
+  }
+
+  instagram() {
+  }
+
+  facebook() {
+  }
+
+  whatsapp() {
+  }
+
+  tiktok() {
+  }
 }
