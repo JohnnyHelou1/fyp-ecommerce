@@ -3,8 +3,8 @@ package com.ecommerce.fyp.persistence.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Order")
-public class Order {
+@Table(name = "InvoiceOrder")
+public class InvoiceOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +25,11 @@ public class Order {
     @JoinColumn(name = "INVOICE_ID")
     private Invoice invoice;
 
-    public Order() {
+    public InvoiceOrder() {
 
     }
 
-    public Order(Integer id, Product product, int quantity, double price, Invoice invoice) {
+    public InvoiceOrder(Integer id, Product product, int quantity, double price, Invoice invoice) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
@@ -37,7 +37,7 @@ public class Order {
         this.invoice = invoice;
     }
 
-    public Order(Product product, int quantity, double price, Invoice invoice) {
+    public InvoiceOrder(Product product, int quantity, double price, Invoice invoice) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;

@@ -27,27 +27,27 @@ public class Invoice {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "invoice")
-    private List<Order> orders;
+    private List<InvoiceOrder> invoiceOrders;
 
     public Invoice() {
 
     }
 
-    public Invoice(Integer id, Date creationDate, String name, String address, String phoneNumber, List<Order> orders) {
+    public Invoice(Integer id, Date creationDate, String name, String address, String phoneNumber, List<InvoiceOrder> invoiceOrders) {
         this.id = id;
         this.creationDate = creationDate;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.orders = orders;
+        this.invoiceOrders = invoiceOrders;
     }
 
-    public Invoice(Date creationDate, String name, String address, String phoneNumber, List<Order> orders) {
+    public Invoice(Date creationDate, String name, String address, String phoneNumber, List<InvoiceOrder> invoiceOrders) {
         this.creationDate = creationDate;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.orders = orders;
+        this.invoiceOrders = invoiceOrders;
     }
 
     public Integer getId() {
@@ -90,11 +90,11 @@ public class Invoice {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<InvoiceOrder> getOrders() {
+        return invoiceOrders;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrders(List<InvoiceOrder> invoiceOrders) {
+        this.invoiceOrders = invoiceOrders;
     }
 }
