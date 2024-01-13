@@ -4,6 +4,7 @@ import com.ecommerce.fyp.persistence.model.Product;
 import com.ecommerce.fyp.persistence.model.ProductImage;
 import com.ecommerce.fyp.persistence.repositories.ProductImageRepository;
 import com.ecommerce.fyp.persistence.repositories.ProductRepository;
+import com.ecommerce.fyp.services.exceptions.CategoryNotFoundException;
 import com.ecommerce.fyp.services.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,9 @@ public class ProductService {
         return repository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException(id));
     }
+    public List<Product> getProductByCat (String category) throws CategoryNotFoundException {
+        return repository.findAll();
+    }
 
     public Product createProduct(Product product) {
         return repository.saveAndFlush(product);
@@ -36,6 +40,9 @@ public class ProductService {
 
     public void deleteProduct(int id) {
         repository.deleteById(id);
+    }
+    public boolean isFeaturedProduct (int id){
+        return true;
     }
 
     public ProductImage createImage(ProductImage image) {
@@ -46,4 +53,5 @@ public class ProductService {
 
         imageRepository.deleteById(id);
     }
+
 }
