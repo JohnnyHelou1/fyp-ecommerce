@@ -64,15 +64,15 @@
 
   <div class="row">
     <div class="col"></div>
-    <div class="col">
+    <div class="col" style="cursor: pointer;" (click)="shopNowByCategory('SkinCare')">
       <img src="assets/skin-care-category.webp" class="rounded" width="350" height="230"/>
       <div style="margin-top: -60px; font-weight: 450;" class="ms-4 fs-3 text-white">Skin Care</div>
     </div>
-    <div class="col">
+    <div class="col" style="cursor: pointer;" (click)="shopNowByCategory('SunCare')">
       <img src="assets/sun-care-category.webp" class="rounded" width="350" height="230"/>
       <div style="margin-top: -60px; font-weight: 450;" class="ms-4 fs-3 text-white">Sun Care</div>
     </div>
-    <div class="col">
+    <div class="col" style="cursor: pointer;" (click)="shopNowByCategory('BodyCare')">
       <img src="assets/body-care-category.webp" class="rounded" width="350" height="230"/>
       <div style="margin-top: -60px; font-weight: 450;" class="ms-4 fs-3 text-white">Body Care</div>
     </div>
@@ -80,15 +80,15 @@
   </div>
   <div class="row mt-5">
     <div class="col"></div>
-    <div class="col">
+    <div class="col" style="cursor: pointer;" (click)="shopNowByCategory('HairCare')">
       <img src="assets/hair-care-category.webp" class="rounded" width="350" height="230"/>
       <div style="margin-top: -60px; font-weight: 450;" class="ms-4 fs-3 text-white">Hair Care</div>
     </div>
-    <div class="col">
+    <div class="col" style="cursor: pointer;" (click)="shopNowByCategory('Perfume')">
       <img src="assets/perfume-category.webp" class="rounded" width="350" height="230"/>
       <div style="margin-top: -60px; font-weight: 450;" class="ms-4 fs-3 text-white">Perfume</div>
     </div>
-    <div class="col">
+    <div class="col" style="cursor: pointer;" (click)="shopNowByCategory('Accessories')">
       <img src="assets/accessories-category.webp" class="rounded" width="350" height="230"/>
       <div style="margin-top: -60px; font-weight: 450;" class="ms-4 fs-3 text-white">Accessories</div>
     </div>
@@ -99,6 +99,11 @@
 <div style="background-color: transparent; background-image: linear-gradient(180deg, #E0BFB81A 0%, #FFFFFF 48%);"
 class="mt-5 p-4 text-center">
   <h3>Featured Products</h3>
+  <div class="container pt-4">
+    <div class="row">
+      <app-product-view class="col-4" *ngFor="let p of this.featuredProducts" [product]="p"></app-product-view>
+    </div>
+  </div>
 </div>
 
 <div class="container">
@@ -116,10 +121,10 @@ class="mt-5 p-4 text-center">
   </div>
   <div class="row mt-5">
     <div class="col-2"></div>
-    <div class="col text-center"><img (click)="instagram()" src="assets/instagram-icon.png" width="90" height="78"/></div>
-    <div class="col text-center"><img (click)="facebook()" src="assets/facebook-icon.png" width="90" height="78"/></div>
-    <div class="col text-center"><img (click)="whatsapp()" src="assets/whatsapp-icon.png" width="90" height="78"/></div>
-    <div class="col text-center"><img (click)="tiktok()" src="assets/tiktok-icon.png" width="90" height="78"/></div>
+    <div class="col text-center" style="cursor: pointer;"><img (click)="instagram()" src="assets/instagram-icon.png" width="90" height="78"/></div>
+    <div class="col text-center" style="cursor: pointer;"><img (click)="facebook()" src="assets/facebook-icon.png" width="90" height="78"/></div>
+    <div class="col text-center" style="cursor: pointer;"><img (click)="whatsapp()" src="assets/whatsapp-icon.png" width="90" height="78"/></div>
+    <div class="col text-center" style="cursor: pointer;"><img (click)="tiktok()" src="assets/tiktok-icon.png" width="90" height="78"/></div>
     <div class="col-2"></div>
   </div>
 </div>

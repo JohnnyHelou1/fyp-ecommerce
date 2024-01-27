@@ -25,9 +25,8 @@ public class Product {
     @Column(name = "category")
     private String category;
 
-    @Column(name="featuredProduct")
-    boolean isFeatured;
-
+    @Column(name = "featured")
+    boolean featured;
 
     @OneToMany(mappedBy = "product")
     private List<ProductImage> images;
@@ -36,15 +35,14 @@ public class Product {
 
     }
 
-    public Product(Integer productID, String name, String description, double price,String category,boolean isFeatured, List<ProductImage> images) {
+    public Product(Integer productID, String name, String description, double price, String category, boolean featured, List<ProductImage> images) {
         this.productID = productID;
         this.name = name;
         this.description = description;
         this.price = price;
         this.images = images;
         this.category = category;
-        this.isFeatured = isFeatured;
-
+        this.featured = featured;
     }
 
     public Integer getProductID() {
@@ -68,11 +66,11 @@ public class Product {
     }
 
     public boolean isFeatured() {
-        return isFeatured;
+        return featured;
     }
 
     public void setFeatured(boolean featured) {
-        isFeatured = featured;
+        this.featured = featured;
     }
 
     public void setName(String name) {

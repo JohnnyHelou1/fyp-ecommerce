@@ -5,7 +5,6 @@ import com.ecommerce.fyp.controllers.model.ReSTProductImage;
 import com.ecommerce.fyp.persistence.model.Product;
 import com.ecommerce.fyp.persistence.model.ProductImage;
 import com.ecommerce.fyp.services.ProductService;
-import com.ecommerce.fyp.services.exceptions.CategoryNotFoundException;
 import com.ecommerce.fyp.services.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,11 +35,19 @@ public class ProductController {
     public ReSTProduct getProduct(@PathVariable("id") int id) throws ProductNotFoundException {
         return toReSTProduct(productService.getProduct(id));
     }
-    @GetMapping(value = "/{category}")
-    public List<ReSTProduct> getProductByCat(@PathVariable("category") String category) throws CategoryNotFoundException {
-        return new ArrayList<>(productService.getProductByCat(category).stream()
+
+    @GetMapping(value = "/categories/{category}")
+    public List<ReSTProduct> getProductByCategory(@PathVariable("category") String category) {
+        return productService.getProductsByCategory(category).stream()
                 .map(this::toReSTProduct)
-                .collect(toList()));
+                .collect(toList());
+    }
+
+    @RequestMapping(value ="/featured")
+    public List<Product> getFeaturedProducts() {
+        return productService.getFeaturedProducts().stream()
+                .limit(3)
+                .toList();
     }
 
     @PutMapping
@@ -52,11 +59,6 @@ public class ProductController {
     public void deleteProduct(@PathVariable("id") int id) {
         productService.deleteProduct(id);
     }
-    @RequestMapping(value ="featuredProduct")
-    public boolean isFeaturedProduct(int id) {
-        return true;
-    }
-
 
     @PutMapping(value = "/{id}/images")
     public ReSTProductImage createImage(@PathVariable("id") int id, @RequestBody ReSTProductImage image) throws ProductNotFoundException {
@@ -80,6 +82,8 @@ public class ProductController {
         reSTProduct.setDescription(product.getDescription());
         reSTProduct.setName(product.getName());
         reSTProduct.setPrice(product.getPrice());
+        reSTProduct.setCategory(product.getCategory());
+        reSTProduct.setFeatured(product.isFeatured());
         reSTProduct.setImages(product.getImages().stream()
                 .map(this::toReSTImage)
                 .collect(toList()));

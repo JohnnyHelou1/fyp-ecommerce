@@ -11,6 +11,8 @@ public class ReSTProduct {
     private String name;
     private String description;
     private double price;
+    private String category;
+    private boolean isFeatured;
     private List<ReSTProductImage> images;
 
     public Integer getProductID() {
@@ -51,5 +53,21 @@ public class ReSTProduct {
 
     public void setImages(List<ReSTProductImage> images) {
         this.images = images;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public boolean isFeatured() {
+        return isFeatured;
+    }
+
+    public void setFeatured(boolean featured) {
+        isFeatured = featured;
     }
 }
