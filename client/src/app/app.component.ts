@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from './product';
 import { ProductServiceService } from './product-service.service';
 
@@ -9,46 +10,26 @@ import { ProductServiceService } from './product-service.service';
 })
 export class AppComponent implements OnInit {
   title = 'ecommerce-client';
-  featuredProducts: Product[] = [];
+  shopProducts: ShopProducts;
 
-  constructor(private productService: ProductServiceService) {}
+  constructor(private productService: ProductServiceService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.productService.queryFeaturedProducts()
+    this.productService.queryAllProducts()
       .subscribe((res: Product[]) => {
-        this.featuredProducts = res;
+        this.shopProducts = { products: res };
       });
   }
 
   shopNow() {
     this.productService.queryAllProducts()
       .subscribe((res: Product[]) => {
-        console.log(res);
-        // Open Shop Page
+        this.router.navigateByUrl('/shop-page', { state: { products: res } });
       });
   }
+}
 
-  shopNowByCategory(category: string) {
-    this.productService.queryCategoryProducts(category)
-      .subscribe((res: Product[]) => {
-        console.log(res);
-        // Open Shop Page
-      });
-  }
-
-  goToCart() {
-    console.log("Go to cart");
-  }
-
-  instagram() {
-  }
-
-  facebook() {
-  }
-
-  whatsapp() {
-  }
-
-  tiktok() {
-  }
+class ShopProducts {
+  products: Product[]
 }
